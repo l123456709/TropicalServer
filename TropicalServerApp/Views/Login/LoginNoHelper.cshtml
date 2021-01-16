@@ -1,0 +1,58 @@
+﻿@*strongly typed view: need to specify the model*@
+@model TropicalServerApp.Models.tblTropicalUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/TropicalStyles/Login.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title - TropicalServer</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="imageDisplay">
+                <img height="100" src="@Url.Content("~/Images/Header.jpg")" />
+            </div>
+
+            <div id="BodyDetail">
+                @*@Html.Label("Mobile", "MOBILE CUSTOMER ORDER TRACKING")*@
+                <h1>MOBILE CUSTOMER ORDER TRACKING</h1>
+                @*Login Box Here*@
+                <div id="loginBox">
+                    <form method="post" action="@Url.Action("Authorize", "Login")">
+                        <label for="useridlbl">Login ID:</label>
+                        <input type="text" id="useridtextbox" style="color:black" required><br>
+
+                        <label for="passwordlbl">Password:</label>
+                        <input type="text" id="passwordtextbox" style="color:black" required><br>
+
+                        <label>
+                            Remember myID
+                            <input id="Checkbox1" checked="checked" type="checkbox" />
+                        </label>
+
+                        <input type="submit" name="name" id="LoginBtn_1" value="Login-In" />
+                    </form>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @*client validation*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

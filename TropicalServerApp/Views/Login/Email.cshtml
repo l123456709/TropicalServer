@@ -1,0 +1,31 @@
+﻿@model TropicalServerApp.Models.tblTropicalUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Email</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/TropicalStyles/Login.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title - TropicalServer</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div>
+        @*specift action and controller*@
+        @using (Html.BeginForm("AuthorizeEmail", "Login", FormMethod.Post))
+        {
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+            <input type="submit" name="name" value="Submit" />
+        }
+        </div>
+</body>
+</html>

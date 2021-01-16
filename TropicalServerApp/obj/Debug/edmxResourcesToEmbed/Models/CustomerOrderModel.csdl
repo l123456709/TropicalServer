@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TropicalServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="CustID" />
+    </Key>
+    <Property Name="CustID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustNumber" Type="Int32" />
+    <Property Name="CustName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeZip" Type="Int32" />
+    <Property Name="CustPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustFaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustRouteNumber" Type="Int32" />
+    <Property Name="CustSalesRepNumber" Type="Int32" />
+    <Property Name="CustOrderEntryContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustPromoGroup" Type="Int32" />
+    <Property Name="CustPriceGroup" Type="Int32" />
+    <Property Name="CustPaymentTermsCode" Type="Int32" />
+    <Property Name="CustPaymentType" Type="Int32" />
+    <Property Name="CustBillingAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingZip" Type="Int32" />
+    <Property Name="CustRouteVisitWeekDay" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CustSequence" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderTrackingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderRouteNumber" Type="Int32" />
+    <Property Name="OrderCustomerNumber" Type="Int32" />
+    <Property Name="OrderGroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderCaseNumbers" Type="Int32" />
+    <Property Name="OrderItemNumber" Type="Int32" />
+    <Property Name="OrderPromoNumber" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderItemQty" Type="Int32" />
+    <Property Name="ItemUnitPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemTotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TabletID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DataSyncDateTime" Type="DateTime" Precision="3" />
+    <Property Name="OrderConfirmFlag" Type="Int32" />
+    <Property Name="ItemType" Type="Int32" />
+    <Property Name="PerPoundItemsWeight" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityContainer Name="TropicalServerEntitiesCustOrder" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCustomers" EntityType="Self.tblCustomer" />
+    <EntitySet Name="tblOrders" EntityType="Self.tblOrder" />
+    <FunctionImport Name="GetCollectionsReport" ReturnType="Collection(TropicalServerModel.GetCollectionsReport_Result)">
+      <Parameter Name="RouteNumber" Mode="In" Type="Int32" />
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GetCustomersSetting" ReturnType="Collection(TropicalServerModel.GetCustomersSetting_Result)" />
+    <FunctionImport Name="GetCustSalesRepNumber" ReturnType="Collection(Int32)">
+      <Parameter Name="custSaleRepNum" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetPriceGroupSetting" ReturnType="Collection(TropicalServerModel.GetPriceGroupSetting_Result)" />
+    <FunctionImport Name="GetProductByProductCategory" ReturnType="Collection(TropicalServerModel.GetProductByProductCategory_Result)">
+      <Parameter Name="itemDescription" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetRouteInfo" ReturnType="Collection(TropicalServerModel.GetRouteInfo_Result)">
+      <Parameter Name="roleID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetUsersSetting" ReturnType="Collection(TropicalServerModel.GetUsersSetting_Result)" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetRouteNumbers" ReturnType="Collection(TropicalServerModel.sp_GetRouteNumbers_Result)">
+      <Parameter Name="RouteNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TropicalServerModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TropicalServerModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spGetOrdersByTimePeriod" ReturnType="Collection(TropicalServerModel.spGetOrdersByTimePeriod_Result)">
+      <Parameter Name="OrderDate" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetCollectionsReport_Result">
+    <Property Type="DateTime" Name="CollectionDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="CollectionAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="CollectionCheckNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CollectionCashYesNo" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="CustName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CustOfficeAddress1" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="GetCustomersSetting_Result">
+    <Property Type="Int32" Name="Customer__" Nullable="true" />
+    <Property Type="String" Name="Company_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="185" />
+    <Property Type="String" Name="Customer_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Route__" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetPriceGroupSetting_Result">
+    <Property Type="Int32" Name="Price_Group_Number" Nullable="true" />
+    <Property Type="Int32" Name="Item_Number" Nullable="true" />
+    <Property Type="Int32" Name="Route_Number" Nullable="true" />
+    <Property Type="String" Name="Begin_Date" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="End_Date" Nullable="true" MaxLength="30" />
+    <Property Type="Decimal" Name="Effective_Price" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="GetProductByProductCategory_Result">
+    <Property Type="Int32" Name="ITEM__" Nullable="true" />
+    <Property Type="String" Name="ITEM_DESCRIPTION" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PRE_PRICE" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SIZE" Nullable="true" MaxLength="104" />
+  </ComplexType>
+  <ComplexType Name="GetRouteInfo_Result">
+    <Property Type="Int32" Name="Route" Nullable="true" />
+    <Property Type="String" Name="Sales_Rep" Nullable="true" MaxLength="101" />
+    <Property Type="Int32" Name="CustNumber" Nullable="true" />
+    <Property Type="String" Name="CustName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CustOfficeAddress1" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CustRouteVisitWeekDay" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="GetUsersSetting_Result">
+    <Property Type="String" Name="First_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Login_ID" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="8000" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_GetRouteNumbers_Result">
+    <Property Type="Int32" Name="CustRouteNumber" Nullable="true" />
+    <Property Type="String" Name="CustRouteRep" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetOrdersByTimePeriod_Result">
+    <Property Type="String" Name="OrderTrackingNumber" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="OrderCustomerNumber" Nullable="true" />
+    <Property Type="String" Name="CustName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CustOfficeAddress1" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="OrderRouteNumber" Nullable="true" />
+  </ComplexType>
+</Schema>

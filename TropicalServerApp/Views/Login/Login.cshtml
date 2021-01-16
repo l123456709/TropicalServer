@@ -1,0 +1,80 @@
+﻿@*strongly typed view: need to specify the model*@
+@model TropicalServerApp.Models.tblTropicalUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/TropicalStyles/Login.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title - TropicalServer</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="imageDisplay">
+                <img height="100" src="@Url.Content("~/Images/Header.jpg")" />
+            </div>
+
+            <div id="BodyDetail">
+                @Html.Label("Mobile", "MOBILE CUSTOMER ORDER TRACKING", new { style = "color:white;font-size:20px" })
+                @*Login Box Here*@
+                <div id="loginBox">
+                    @*Html.BeginForm is the Html Helper Extension Method that is used for creating and rendering the form in HTML.*@
+                    @*submitted form will send vlaues to Authorize action inside Login controller*@
+                    @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+                    {
+                        <table class="center">
+                            <tr>
+                                <td>@Html.LabelFor(model => model.LoginID, new { @id = "useridlbl" })</td>
+                                <td>@Html.EditorFor(model => model.LoginID)</td>
+                                <td>@Html.ValidationMessageFor(model => model.LoginID)</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Password, new { @id = "passwordlbl" })</td>
+                                <td>@Html.EditorFor(model => model.Password)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <label>@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.Label("Remember", "Remember myID", new { @style = "font-weight:normal" })
+                                    @Html.CheckBox("IsRemember", true)
+                                </td>
+                                <td></td>
+                                <td><input type="submit" name="name" id="LoginBtn_1" value="Login-In" /></td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+
+                <table>
+                    <tr>
+                        <td>@Html.ActionLink("ForgotUsername", "ForgotUsername", "Login", null, new { @style = "font-family:Calibri;font-size:16px;text-decoration:underline;color:#FFFFFF;margin-left:50px;"})</td>
+                        <td>@Html.ActionLink("ForgotPassword", "ForgotPassword", "Login", null, new { @style = "font-family:Calibri;font-size:16px;text-decoration:underline;color:#FFFFFF;margin-left:50px;"})</td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @*client validation*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

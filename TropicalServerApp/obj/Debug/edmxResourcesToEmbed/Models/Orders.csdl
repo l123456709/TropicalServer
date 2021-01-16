@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TropicalServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderTrackingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderRouteNumber" Type="Int32" />
+    <Property Name="OrderCustomerNumber" Type="Int32" />
+    <Property Name="OrderGroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderCaseNumbers" Type="Int32" />
+    <Property Name="OrderItemNumber" Type="Int32" />
+    <Property Name="OrderPromoNumber" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderItemQty" Type="Int32" />
+    <Property Name="ItemUnitPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemTotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TabletID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DataSyncDateTime" Type="DateTime" Precision="3" />
+    <Property Name="OrderConfirmFlag" Type="Int32" />
+    <Property Name="ItemType" Type="Int32" />
+    <Property Name="PerPoundItemsWeight" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityContainer Name="TropicalServerEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Orders" EntityType="TropicalServerModel.Order" />
+  </EntityContainer>
+</Schema>

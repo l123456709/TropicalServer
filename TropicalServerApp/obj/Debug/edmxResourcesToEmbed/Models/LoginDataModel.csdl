@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TropicalServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAnswer">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="AnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="Answer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SurveyDate" Type="DateTime" Precision="0" />
+    <Property Name="ItemNumber" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblCity">
+    <Key>
+      <PropertyRef Name="City_ID" />
+    </Key>
+    <Property Name="City_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_Abbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="State_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="CustID" />
+    </Key>
+    <Property Name="CustID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustNumber" Type="Int32" />
+    <Property Name="CustName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CustOfficeZip" Type="Int32" />
+    <Property Name="CustPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustFaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustRouteNumber" Type="Int32" />
+    <Property Name="CustSalesRepNumber" Type="Int32" />
+    <Property Name="CustOrderEntryContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustPromoGroup" Type="Int32" />
+    <Property Name="CustPriceGroup" Type="Int32" />
+    <Property Name="CustPaymentTermsCode" Type="Int32" />
+    <Property Name="CustPaymentType" Type="Int32" />
+    <Property Name="CustBillingAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CustBillingZip" Type="Int32" />
+    <Property Name="CustRouteVisitWeekDay" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CustSequence" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblCustPaymentTerm">
+    <Key>
+      <PropertyRef Name="CustPaymentTermID" />
+    </Key>
+    <Property Name="CustPaymentTermID" Type="Int32" Nullable="false" />
+    <Property Name="CustPaymentTermCode" Type="Int32" />
+    <Property Name="CustPaymentTermDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblCustRoute">
+    <Key>
+      <PropertyRef Name="CustRouteNumberID" />
+    </Key>
+    <Property Name="CustRouteNumberID" Type="Int32" Nullable="false" />
+    <Property Name="CustRouteNumber" Type="Int32" />
+    <Property Name="CustRouteNumberDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustRouteUserAssignID" Type="Int32" />
+    <Property Name="CustRouteAssignFrom" Type="DateTime" Precision="3" />
+    <Property Name="CustRouteAssignTo" Type="DateTime" Precision="3" />
+    <Property Name="CustRouteRep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblInvoiceHistory">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceNumber" Type="Int32" />
+    <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceForCustomerNumber" Type="Int32" />
+    <Property Name="InvoiceAmount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="tblItem">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemNumber" Type="Int32" />
+    <Property Name="ItemShortDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ItemUPC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemShelfLife" Type="Int32" />
+    <Property Name="ItemReturnAllowedFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ItemType" Type="Int32" />
+    <Property Name="ItemUnits" Type="Int32" />
+    <Property Name="ItemWeights" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemPriceGroup" Type="Int32" />
+    <Property Name="ItemProductGroup" Type="Int32" />
+    <Property Name="ItemPromoGroup" Type="Int32" />
+    <Property Name="PrePrice" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblItemPromoGroup">
+    <Key>
+      <PropertyRef Name="ItemPromoGroupID" />
+    </Key>
+    <Property Name="ItemPromoGroupID" Type="Int32" Nullable="false" />
+    <Property Name="ItemPromoGroupNumber" Type="Int32" />
+    <Property Name="ItemPromoGroupDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblItemType">
+    <Key>
+      <PropertyRef Name="ItemTypeID" />
+    </Key>
+    <Property Name="ItemTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemTypeNumber" Type="Int32" />
+    <Property Name="ItemTypeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderTrackingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderRouteNumber" Type="Int32" />
+    <Property Name="OrderCustomerNumber" Type="Int32" />
+    <Property Name="OrderGroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderCaseNumbers" Type="Int32" />
+    <Property Name="OrderItemNumber" Type="Int32" />
+    <Property Name="OrderPromoNumber" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderItemQty" Type="Int32" />
+    <Property Name="ItemUnitPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemTotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TabletID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DataSyncDateTime" Type="DateTime" Precision="3" />
+    <Property Name="OrderConfirmFlag" Type="Int32" />
+    <Property Name="ItemType" Type="Int32" />
+    <Property Name="PerPoundItemsWeight" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="tblOrderHistory">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderCustomerNumber" Type="Int32" Nullable="false" />
+    <Property Name="OrderItemNumber" Type="Int32" />
+    <Property Name="OrderDate1" Type="DateTime" Precision="3" />
+    <Property Name="OrderItemQty1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate2" Type="DateTime" Precision="3" />
+    <Property Name="OrderItemQty2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate3" Type="DateTime" Precision="3" />
+    <Property Name="OrderItemQty3" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OrderDate4" Type="DateTime" Precision="3" />
+    <Property Name="OrderItemQty4" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate5" Type="DateTime" Precision="3" />
+    <Property Name="OrderItemQty5" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate6" Type="DateTime" Precision="3" />
+    <Property Name="OrderItemQty6" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="tblProductGroup">
+    <Key>
+      <PropertyRef Name="ItemProductGroupID" />
+    </Key>
+    <Property Name="ItemProductGroupID" Type="Int32" Nullable="false" />
+    <Property Name="ItemProductGroupNumber" Type="Int32" />
+    <Property Name="ItemProductGroupDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblQuestionMaster">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionTypeID" Type="Int32" />
+    <Property Name="QuesType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ValidationType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblQuestionType">
+    <Key>
+      <PropertyRef Name="QuestionTypeID" />
+    </Key>
+    <Property Name="QuestionTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionTypeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblReturn">
+    <Key>
+      <PropertyRef Name="ReturnID" />
+    </Key>
+    <Property Name="ReturnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReturnGroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReturnCaseNumbers" Type="Int32" />
+    <Property Name="ReturnItemNumber" Type="Int32" />
+    <Property Name="ReturnPromoNumber" Type="Int32" />
+    <Property Name="ReturnItemWeight" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnItemUnits" Type="Int32" />
+    <Property Name="ItemUnitPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CustomerNumber" Type="Int32" />
+    <Property Name="ItemTotalPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TabletID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DataSyncDateTime" Type="DateTime" Precision="3" />
+    <Property Name="OrderConfirmFlag" Type="Int32" />
+    <Property Name="ItemType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblReturnType">
+    <Key>
+      <PropertyRef Name="ReturnTypeID" />
+    </Key>
+    <Property Name="ReturnTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReturnTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReturnTypeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblState">
+    <Key>
+      <PropertyRef Name="State_ID" />
+    </Key>
+    <Property Name="State_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State_Abbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Country_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblTropicalUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="UserRouteNumber" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblTropicalUserRole">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RoleCreatedBy" Type="Int32" />
+    <Property Name="RoleCreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblCollection">
+    <Key>
+      <PropertyRef Name="CollectionID" />
+    </Key>
+    <Property Name="CollectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollectionDate" Type="DateTime" Precision="3" />
+    <Property Name="CollectionAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CollectionCheckNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CollectionCashYesNo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CollectionForCustomerNumber" Type="Int32" />
+    <Property Name="OrderConfirmFlag" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblCustPaymentType">
+    <Key>
+      <PropertyRef Name="CustPaymentTypeID" />
+    </Key>
+    <Property Name="CustPaymentTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CustPaymentTypeNumber" Type="Int32" />
+    <Property Name="CustPaymentTypeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblMesssage">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MessageAssignRouteNumber" Type="Int32" />
+    <Property Name="MessageAllFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MessageAssignUserID" Type="Int32" />
+    <Property Name="MessageDateAndTime" Type="DateTime" Precision="3" />
+    <Property Name="MessageCreatedByUser" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblPriceGroup">
+    <Key>
+      <PropertyRef Name="PriceGroupID" />
+    </Key>
+    <Property Name="PriceGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PriceGroupNumber" Type="Int32" />
+    <Property Name="ItemNumber" Type="Int32" />
+    <Property Name="RouteNumber" Type="Int32" />
+    <Property Name="BeginDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="EffectivePrice" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="tblUserLogin">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TropicalServerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAnswers" EntityType="Self.tblAnswer" />
+    <EntitySet Name="tblCities" EntityType="Self.tblCity" />
+    <EntitySet Name="tblCustomers" EntityType="Self.tblCustomer" />
+    <EntitySet Name="tblCustPaymentTerms" EntityType="Self.tblCustPaymentTerm" />
+    <EntitySet Name="tblCustRoutes" EntityType="Self.tblCustRoute" />
+    <EntitySet Name="tblInvoiceHistories" EntityType="Self.tblInvoiceHistory" />
+    <EntitySet Name="tblItems" EntityType="Self.tblItem" />
+    <EntitySet Name="tblItemPromoGroups" EntityType="Self.tblItemPromoGroup" />
+    <EntitySet Name="tblItemTypes" EntityType="Self.tblItemType" />
+    <EntitySet Name="tblOrders" EntityType="Self.tblOrder" />
+    <EntitySet Name="tblOrderHistories" EntityType="Self.tblOrderHistory" />
+    <EntitySet Name="tblProductGroups" EntityType="Self.tblProductGroup" />
+    <EntitySet Name="tblQuestionMasters" EntityType="Self.tblQuestionMaster" />
+    <EntitySet Name="tblQuestionTypes" EntityType="Self.tblQuestionType" />
+    <EntitySet Name="tblReturns" EntityType="Self.tblReturn" />
+    <EntitySet Name="tblReturnTypes" EntityType="Self.tblReturnType" />
+    <EntitySet Name="tblStates" EntityType="Self.tblState" />
+    <EntitySet Name="tblTropicalUsers" EntityType="Self.tblTropicalUser" />
+    <EntitySet Name="tblTropicalUserRoles" EntityType="Self.tblTropicalUserRole" />
+    <EntitySet Name="tblCollections" EntityType="Self.tblCollection" />
+    <EntitySet Name="tblCustPaymentTypes" EntityType="Self.tblCustPaymentType" />
+    <EntitySet Name="tblMesssages" EntityType="Self.tblMesssage" />
+    <EntitySet Name="tblPriceGroups" EntityType="Self.tblPriceGroup" />
+    <EntitySet Name="tblUserLogins" EntityType="Self.tblUserLogin" />
+  </EntityContainer>
+</Schema>

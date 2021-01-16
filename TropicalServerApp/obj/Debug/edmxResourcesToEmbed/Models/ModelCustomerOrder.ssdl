@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TropicalServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="CustID" />
+    </Key>
+    <Property Name="CustID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustNumber" Type="int" />
+    <Property Name="CustName" Type="varchar" MaxLength="100" />
+    <Property Name="CustOfficeAddress1" Type="varchar" MaxLength="100" />
+    <Property Name="CustOfficeAddress2" Type="varchar" MaxLength="100" />
+    <Property Name="CustOfficeCity" Type="varchar" MaxLength="50" />
+    <Property Name="CustOfficeState" Type="varchar" MaxLength="2" />
+    <Property Name="CustOfficeZip" Type="int" />
+    <Property Name="CustPhoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="CustFaxNumber" Type="varchar" MaxLength="50" />
+    <Property Name="CustRouteNumber" Type="int" />
+    <Property Name="CustSalesRepNumber" Type="int" />
+    <Property Name="CustOrderEntryContactName" Type="varchar" MaxLength="100" />
+    <Property Name="CustPromoGroup" Type="int" />
+    <Property Name="CustPriceGroup" Type="int" />
+    <Property Name="CustPaymentTermsCode" Type="int" />
+    <Property Name="CustPaymentType" Type="int" />
+    <Property Name="CustBillingAddress1" Type="varchar" MaxLength="100" />
+    <Property Name="CustBillingAddress2" Type="varchar" MaxLength="100" />
+    <Property Name="CustBillingCity" Type="varchar" MaxLength="100" />
+    <Property Name="CustBillingState" Type="varchar" MaxLength="2" />
+    <Property Name="CustBillingZip" Type="int" />
+    <Property Name="CustRouteVisitWeekDay" Type="varchar" MaxLength="10" />
+    <Property Name="CustSequence" Type="int" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderTrackingNumber" Type="varchar" MaxLength="50" />
+    <Property Name="OrderRouteNumber" Type="int" />
+    <Property Name="OrderCustomerNumber" Type="int" />
+    <Property Name="OrderGroupNumber" Type="varchar" MaxLength="50" />
+    <Property Name="OrderCaseNumbers" Type="int" />
+    <Property Name="OrderItemNumber" Type="int" />
+    <Property Name="OrderPromoNumber" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderItemQty" Type="int" />
+    <Property Name="ItemUnitPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ItemTotalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" />
+    <Property Name="TabletID" Type="varchar" MaxLength="50" />
+    <Property Name="DataSyncDateTime" Type="datetime" />
+    <Property Name="OrderConfirmFlag" Type="int" />
+    <Property Name="ItemType" Type="int" />
+    <Property Name="PerPoundItemsWeight" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityContainer Name="TropicalServerModelStoreContainer">
+    <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TropicalServerApp.Models.tblOrder>
+
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    foreach (var Item in Model)
+    {
+        <tr>
+            <td>@Item.OrderTrackingNumber</td>
+            <td>@Item.OrderDate</td>
+            <td>@Item.OrderCustomerNumber</td>
+            <td>@Item.CustName</td>
+            <td>@Item.CustOfficeAddress1</td>
+            <td>@Item.OrderRouteNumber</td>
+            <td>
+                @Html.ActionLink("View", "View")
+                @Html.ActionLink("Edit", "Edit")
+                @Html.ActionLink("Delete", "Delete")
+            </td>
+        </tr>
+    }
+}

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TropicalServerModelStoreContainer" CdmEntityContainer="TropicalServerEntities1">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="TropicalServerModel.Order">
+        <MappingFragment StoreEntitySet="tblOrder">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderTrackingNumber" ColumnName="OrderTrackingNumber" />
+          <ScalarProperty Name="OrderRouteNumber" ColumnName="OrderRouteNumber" />
+          <ScalarProperty Name="OrderCustomerNumber" ColumnName="OrderCustomerNumber" />
+          <ScalarProperty Name="OrderGroupNumber" ColumnName="OrderGroupNumber" />
+          <ScalarProperty Name="OrderCaseNumbers" ColumnName="OrderCaseNumbers" />
+          <ScalarProperty Name="OrderItemNumber" ColumnName="OrderItemNumber" />
+          <ScalarProperty Name="OrderPromoNumber" ColumnName="OrderPromoNumber" />
+          <ScalarProperty Name="OrderItemQty" ColumnName="OrderItemQty" />
+          <ScalarProperty Name="ItemUnitPrice" ColumnName="ItemUnitPrice" />
+          <ScalarProperty Name="ItemTotalPrice" ColumnName="ItemTotalPrice" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TabletID" ColumnName="TabletID" />
+          <ScalarProperty Name="DataSyncDateTime" ColumnName="DataSyncDateTime" />
+          <ScalarProperty Name="OrderConfirmFlag" ColumnName="OrderConfirmFlag" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="PerPoundItemsWeight" ColumnName="PerPoundItemsWeight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

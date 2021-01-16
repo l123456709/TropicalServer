@@ -1,0 +1,159 @@
+﻿@model TropicalServerApp.Models.tblOrder
+@*@model IEnumerable<TropicalServerApp.Models.ViewModel>*@
+
+
+@{
+    Layout = null;
+
+    @*if exclude this statement, anyone can access the dashboard using URL ~/Product/Orders*@
+    if (Session["LoginID"] == null)
+    {
+        Response.Redirect("~/Login/Login");
+    }
+}
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/TropicalStyles/Orders.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/TropicalStyles/Main.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title - TropicalServer</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")"></script>
+    <style>
+        body {
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page">
+        <div class="imageDisplay">
+            <img height="100" src="@Url.Content("~/Images/Header.jpg")" />
+        </div>
+
+        @*Title Bar*@
+        @*Nav tabs*@
+        <div class="menu" id="tabs">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a href="@Url.Action("Orders","Product")" role="tab" data-toggle="tabs">Orders</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Products","Product")" role="tab" data-toggle="tabs">Products</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Routes","Product")" role="tab" data-toggle="tabs">Routes</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("StopSEQN","Product")" role="tab" data-toggle="tabs">Stop SEQN</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("MessageCenter","Product")" role="tab" data-toggle="tabs">Message Center</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Reports","Product")" role="tab" data-toggle="tabs">Reports</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Setting","Product")" role="tab" data-toggle="tabs">Settings</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Logout","Product")" role="tab" data-toggle="tabs">Logout</a>
+                </li>
+            </ul>
+        </div>
+        @*Tab panel*@
+
+
+        @*Criteria Bar*@
+        <div id="CriteriaBar">
+            <div class="Criteria">
+                <label class="label">Order Date:</label>
+                <select class="Input">
+                    <option>Today</option>
+                    <option>Last 7 Days</option>
+                    <option>Last 1 Month</option>
+                    <option>Last 6 Months</option>
+                </select>
+            </div>
+            <div class="Criteria">
+                <label class="label">Customer ID:</label>
+                <input class="Input" type="text" />
+            </div>
+            <div class="Criteria">
+                <label class="label">Customer Name:</label>
+                <input class="Input" type="text" />
+            </div>
+            <div class="Criteria">
+                <label class="label">Sales Manager:</label>
+                <select class="Input"></select>
+            </div>
+        </div>
+
+        <div id="grid">
+            @*Data Display Area*@
+            @*Display:Title Bar*@
+            <table class="gvOrders">
+                <tr>
+                    <th>Tracking #</th>
+                    <th>Order Date</th>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Address</th>
+                    <th>Route#</th>
+                    <th>Avaliable Actions</th>
+                </tr>
+                @*Display:Data*@
+                <tbody id="DataSearching">
+                    @foreach (var Item in ViewBag.OrderList)
+                    {
+                        <tr class="AltRow">
+                            <td>@Item.OrderTrackingNumber</td>
+                            <td>@Item.OrderDate</td>
+                            <td>@Item.OrderCustomerNumber</td>
+                            <td>@Item.CustName</td>
+                            <td>@Item.CustOfficeAddress1</td>
+                            <td>@Item.OrderRouteNumber</td>
+                            <td>
+                                @Html.ActionLink("View", "View", new { id=Item.OrderID})
+                                @Html.ActionLink("Edit", "Edit")
+                                @Html.ActionLink("Delete", "Delete")
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <input type="submit" name="Search" id="searchButton" value="Search" />
+    </div>
+
+    @*pass the searching value, view to controller*@
+    <script>
+        //Code included inside $( document ).ready() will only run once the page Document Object Model (DOM) is ready for JavaScript code to execute
+        $(document).ready(function () {
+            $("#searchButton").click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "/Product/GetSearchingData?SearchText=" + searchtext,
+                    contentType: "html",
+                    //receive the filtered data from controller and show it for user
+                    success: function (result) {
+                        $("#DataSearching").html(result);
+                    }
+
+                });
+            });
+        });
+    </script>
+</body>
+</html>

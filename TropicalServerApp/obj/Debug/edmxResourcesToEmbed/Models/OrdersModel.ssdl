@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TropicalServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderTrackingNumber" Type="varchar" MaxLength="50" />
+    <Property Name="OrderRouteNumber" Type="int" />
+    <Property Name="OrderCustomerNumber" Type="int" />
+    <Property Name="OrderGroupNumber" Type="varchar" MaxLength="50" />
+    <Property Name="OrderCaseNumbers" Type="int" />
+    <Property Name="OrderItemNumber" Type="int" />
+    <Property Name="OrderPromoNumber" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderItemQty" Type="int" />
+    <Property Name="ItemUnitPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ItemTotalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" />
+    <Property Name="TabletID" Type="varchar" MaxLength="50" />
+    <Property Name="DataSyncDateTime" Type="datetime" />
+    <Property Name="OrderConfirmFlag" Type="int" />
+    <Property Name="ItemType" Type="int" />
+    <Property Name="PerPoundItemsWeight" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityContainer Name="TropicalServerModelStoreContainer">
+    <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
